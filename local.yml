@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: pre-run | update package cache (debian, etc)
+    tags: always
+    apt: update_cache=yes
+    changed_when: False
+    when: ansible_distribution in ["Debian", "Ubuntu"]
+
+  - name: install packages
+    package:
+      name:
+        - htop
+        - tmux
+        - vim-nox
+        - python3-psutil
