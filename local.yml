@@ -16,4 +16,4 @@
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
   tasks:
-    - include: tasks/packages.yml
+    - include_tasks: tasks/packages.yml
